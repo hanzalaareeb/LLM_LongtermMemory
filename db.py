@@ -1,13 +1,12 @@
 import os
 import datetime
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, ForeignKey
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker, relationship
+from sqlalchemy.orm import sessionmaker, relationship, declarative_base
 
-DATABASE_URL = os.environ.get('DATABASE_URL')
+DATABASE_URL = "sqlite:///./memory.db"
 
-engine = create_engine(DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=True, bind=engine)
+engine = create_engine(DATABASE_URL, echo=False)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 class User(Base):
@@ -29,4 +28,9 @@ class Memory(Base):
 
 
 def init_db():
+    print("Init db...")
     Base.metadata.create_all(bind=engine)
+    print("hurrahhhhh asshole!")
+
+if __name__ == "__main__":
+    init_db()
