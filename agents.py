@@ -49,7 +49,7 @@ class MemoryLayer(MemoryManager): # child class (class MemoryLayer enherits "Mem
         self.db.commit()
         return True
     
-    def get_memory_lists(user_id):
+    def get_memory_lists(self, user_id):
         """get back all memory records for a user_id"""
         db = SessionLocal()
         try:
