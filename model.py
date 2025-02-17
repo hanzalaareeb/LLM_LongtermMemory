@@ -9,7 +9,7 @@ import datetime
 import logging
 from sqlalchemy import create_engine, Column, Integer, String, Text, DateTime, ForeignKey, Date
 from sqlalchemy.orm import sessionmaker, relationship, declarative_base
-from base import Base
+
 
 # Set up logging
 logging.basicConfig(level=logging.INFO)
@@ -18,7 +18,7 @@ DATABASE_URL = "sqlite:///./app.db"
 
 engine = create_engine(DATABASE_URL, echo=False)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-
+Base = declarative_base()
 
 class User(Base):
     __tablename__ = "users"
