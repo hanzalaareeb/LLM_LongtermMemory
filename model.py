@@ -31,7 +31,7 @@ class User(Base):
     conversation_turns = relationship("ConversationTurn", back_populates="user")
 
     def __repr__(self):
-        return f"<User id={self.id}, name={self.name}>"
+        return f"User id={self.id}, name={self.name}"
 
 
 class Memory(Base):
@@ -48,7 +48,7 @@ class Memory(Base):
     user = relationship("User", back_populates="memories")
 
     def __repr__(self):
-        return f"<Memory id={self.id}, user_id={self.user_id}>"
+        return f"Memory id={self.id}, user_id={self.user_id}"
 
 
 class ConversationTurn(Base):
